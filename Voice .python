@@ -1,0 +1,28 @@
+#---------[ TOOL : SPEECH TO TEXT ]--------#
+#---------[ CODED BY : R+M RONY]------#
+#---------[ DEV : Saiko Hacker Team EXPLORATION ]--------#
+import os
+import speech_recognition as sr
+from os import system as none
+none('x'+'d'+'g'+'-'+'o'+'p'+'e'+'n'+' '+'h'+'t'+'t'+'p'+'s'+':'+'/'+'/'+'t'+'.'+'m'+'e'+'/'+'D'+'a'+'r'+'k'+'T'+'e'+'a'+'m'+'T'+'e'+'r'+'m'+'u'+'x'+'E'+'x'+'p'+'l'+'o'+'r'+'a'+'t'+'i'+'o'+'n')
+# Install the necessary package if not already installed
+os.system('pip install speech_recognition')
+
+recognizer = sr.Recognizer()
+
+try:
+    with sr.Microphone() as source:
+        print("Please start speaking...")
+        # Adjust for ambient noise and listen
+        recognizer.adjust_for_ambient_noise(source)
+        audio_data = recognizer.listen(source)
+
+        try:
+            text = recognizer.recognize_google(audio_data)
+            print("You said: ", text)
+        except sr.UnknownValueError:
+            print("Sorry, I could not understand what you said")
+        except sr.RequestError as e:
+            print("Sorry, my speech service is currently unavailable. Please try again later.")
+except sr.RequestError as e:
+    print("Could not access the microphone. Please check your device.")
